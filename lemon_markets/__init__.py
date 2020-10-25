@@ -449,15 +449,15 @@ class Account():
         assert order is None or order in ['date', '-date']
 
         r_tradeslist = _json_response(http.request_encode_url(method='GET',
-                                                            url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/',
-                                                            headers=self._auth_header,
-                                                            fields={
-                                                                'ordering': order,
-                                                                'date_from': date_from,
-                                                                'date_until': date_until,
-                                                                'limit': limit,
-                                                                'offset': offset
-                                                            }))
+                                                              url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/',
+                                                              headers=self._auth_header,
+                                                              fields={
+                                                                  'ordering': order,
+                                                                  'date_from': date_from,
+                                                                  'date_until': date_until,
+                                                                  'limit': limit,
+                                                                  'offset': offset
+                                                              }))
         returnlist = [] * len(r_tradeslist['results'])
         for i, result in enumerate(r_tradeslist['results']):
             returnlist[i] = Trade(result['price'], result['date'])
@@ -1008,7 +1008,6 @@ class Portfolio:
                 f'avg_price: {self.avg_price},'\
                 f'instrument: {str(self.instrument)},'\
                 f'id: {self.id}'
-        
 
     def __init__(self, account=None):
 
@@ -1028,9 +1027,9 @@ class Portfolio:
         returnpositions = [] * len(r_positions)
         for i, result in enumerate(r_positions):
             returnpositions[i] = self.Position(result['quantity'],
-                                                result['average_price'],
-                                                Instrument(result['instrument']['isin']),
-                                                result['uuid'])
+                                               result['average_price'],
+                                               Instrument(result['instrument']['isin']),
+                                               result['uuid'])
         return returnpositions
 
     def get_seperated(self, limit=200, offset=0):
@@ -1126,4 +1125,3 @@ if __name__ == '__main__':
     time.sleep(0.5)
     if debug:
         print(f'[{time.ctime()}:DEBUG] Executed freeze_support()')
-
