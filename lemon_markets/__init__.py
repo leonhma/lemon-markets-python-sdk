@@ -134,7 +134,7 @@ class WebSocket():
 
         if debug:
             debug_str = ''
-            debug_str += f'Unsubscribed from data for {instrument}. '
+            debug_str += f'Unsubscribed from data for {instrument.title}. '
 
         if len(self.subscribed) == 0:
             self._ws_process.terminate()
