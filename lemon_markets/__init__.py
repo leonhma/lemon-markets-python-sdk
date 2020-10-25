@@ -119,7 +119,7 @@ class WebSocket():
             self.__dict__['_ws_process'] = Process(target=self._ws_worker, name='lemon_websocket')
             self.__dict__['_ws_process'].start()
             if debug:
-                debug_str += f'Started worker'
+                debug_str += 'Started worker'
 
         if debug:
             print(f'[{time.ctime()}:DEBUG] {debug_str}')
