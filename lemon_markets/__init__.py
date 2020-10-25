@@ -1,3 +1,4 @@
+# pylama:ignore=E501
 '''lemon_markets, a wrapper for various lemon.markets enpoints
 
 Attributes:
@@ -41,8 +42,8 @@ class WebSocket():
 
         assert None not in [callback, frequency_limit, timeout], 'callback must be specified'
 
-        self.__dict__['_last_message_time'] = 0
-        self.__dict__['_frequency_limit'] = frequency_limit
+        self._last_message_time = 0
+        self._frequency_limit = frequency_limit
         self.timeout = timeout
         self.callback = callback
         self.subscribed = []
@@ -68,13 +69,6 @@ class WebSocket():
         except Exception:
             pass
 
-    def __setattr__(self,
-                    name,
-                    value):
-
-        if name in ['timeout', 'callback', 'subscribed']:
-            self.__dict__[name] = value
-
     def _ws_worker(self):
 
         if debug:
@@ -88,7 +82,7 @@ class WebSocket():
                     response = eval(ws.recv())
                     if(time.time() - self._last_message_time > self._frequency_limit):
                         self.callback(Instrument(response['isin']), Trade(response['price'], response['date']))
-                        self.__dict__['_last_message_time'] = time.time()
+                        self._last_message_time = time.time()
                 except Exception:
                     break
             ws.close()
@@ -113,11 +107,11 @@ class WebSocket():
 
         if debug:
             debug_str = ''
-            debug_str += f'Subscribed to data from {instrument}. '
+            debug_str += f'Subscribed to data from {instrument.title}. '
 
         if len(self.subscribed) == 1:
-            self.__dict__['_ws_process'] = Process(target=self._ws_worker, name='lemon_websocket')
-            self.__dict__['_ws_process'].start()
+            self._ws_process = Process(target=self._ws_worker, name='lemon_websocket')
+            self._ws_process.start()
             if debug:
                 debug_str += 'Started worker'
 
@@ -143,7 +137,7 @@ class WebSocket():
             debug_str += f'Unsubscribed from data for {instrument}. '
 
         if len(self.subscribed) == 0:
-            self.__dict__['_ws_process'].terminate()
+            self._ws_process.terminate()
             if debug:
                 debug_str += 'Stopped worker (no websockets active)'
 

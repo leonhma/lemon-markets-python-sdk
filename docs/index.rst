@@ -10,6 +10,8 @@ Welcome to lemon_markets's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   setup
+   get_started
    reference
 
 
