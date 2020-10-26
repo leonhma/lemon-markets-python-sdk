@@ -40,4 +40,4 @@ jobs:
     
     - name: Linting
       run: |
-        pylama
+        pylama --skip docs/conf.py,setup.py

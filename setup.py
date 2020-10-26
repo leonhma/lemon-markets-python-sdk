@@ -1,5 +1,3 @@
-# pylama:skip=1
-
 # this file contains some placeholders
 # that are changed in a local copy if a release is made
 
