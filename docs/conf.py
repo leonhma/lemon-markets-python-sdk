@@ -1,3 +1,5 @@
+# pylama:skip=1
+
 import os
 import sys
 

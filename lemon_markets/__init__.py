@@ -1,4 +1,4 @@
-# pylama:ignore=E501
+# pylama:ignore=E501,C901
 '''lemon_markets, a wrapper for various lemon.markets enpoints
 
 Attributes:
@@ -84,7 +84,7 @@ class WebSocket():
                         try:
                             self.callback(Instrument(response['isin']), Trade(response['price'], response['date']))
                         except Exception as e:
-                            print(f'[{ctime()}:ERROR] Error in callback function at {self.callback}: {e}')
+                            raise ValueError(f'[{ctime()}:ERROR] Error in callback function at {self.callback}: {e}')
                         self._last_message_time = time()
                 except Exception:
                     break
