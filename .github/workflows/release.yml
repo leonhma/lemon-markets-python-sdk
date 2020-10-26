@@ -60,6 +60,8 @@ jobs:
 
     - name: Install dependencies
       run: |
+        git checkout -b gh-pages
+
         THEME=$(grep -oP '(?<=html_theme = ").+?(?=")' docs/conf.py)
         python3 -m pip install --upgrade pip
         pip install sphinx $THEME
@@ -71,7 +73,6 @@ jobs:
 
     - name: Build using sphinx
       run: |
-        git checkout -b gh-pages
         sphinx-build -M html docs/ build/
         find . -mindepth 1 ! -regex '^./build\(/.*\)?' ! -regex '^./.git\(/.*\)?' -delete
         find build/* -maxdepth 1 -mindepth 1 -not -name build -exec mv '{}' . \;

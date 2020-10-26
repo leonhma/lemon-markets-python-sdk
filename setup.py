@@ -22,11 +22,11 @@ setuptools.setup(
     author_email="none@none.com",  # the email of the repo owner
     classifiers=[  # add some info about you package
         "Programming Language :: Python",
-        "License :: Other/Proprietary License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent"
     ],
     install_requires=[  # add required pypi packages here
-        'websocket',
+        'websocket-client',
         'urllib3'
     ]
 )
