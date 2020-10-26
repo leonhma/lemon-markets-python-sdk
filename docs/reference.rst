@@ -1,5 +1,5 @@
 Reference
 =========
 
-.. automodule:: python_package_automation
+.. automodule:: lemon_markets
     :members:
