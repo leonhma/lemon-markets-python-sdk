@@ -1,3 +1,4 @@
+# pylama:ignore=E501
 # this file contains some placeholders
 # that are changed in a local copy if a release is made
 
@@ -25,5 +26,7 @@ setuptools.setup(
         "Operating System :: OS Independent"
     ],
     install_requires=[  # add required pypi packages here
+        'websocket',
+        'urllib3'
     ]
 )
