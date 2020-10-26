@@ -16,15 +16,20 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
     tsla = lm.Instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
 
     # -------------------------------
-    # Basic information about objects
+    sleep(10)
+    # Printing information about objects
     # -------------------------------
 
     print('Information about tesla (invoking print on instrument object):')
 
     print(tsla)  # prints information about the instrument
+
     # ------------------------
+    sleep(10)
     # Demonstrating WebSockets
     # ------------------------
+
+    print('Stream rt data for tesla using websockets:')
 
     ws = lm.WebSocket(cb)  # creating a websocket client object with the callback 'cb'
 
@@ -33,3 +38,16 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
     sleep(30)  # waiting for 30 sec
 
     del ws  # deleting the websocket, which in turn disables it
+
+    # ----------
+    sleep(10)
+    # Using REST
+    # ----------
+
+    print('Getting the highest price over the last minute for tesla')
+
+    rst = lm.REST()  # initiating the REST object
+
+    candle = rst.get_m1_candlestick_latest(tsla)  # get the latest ohlc candlestick for tesla
+
+    print(candle.high)  # print the highest price over the last minute

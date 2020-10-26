@@ -594,7 +594,7 @@ class REST():
                 returnlist[i] = Candle(result['open'], result['high'], result['low'], result['close'], 60, result['date'])
         return returnlist
 
-    def get_m1_candlesticks_latest(self,
+    def get_m1_candlestick_latest(self,
                                    instrument=None):
         '''Get the latest m1-candlestick
 
