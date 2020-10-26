@@ -20,7 +20,7 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
     # Printing information about objects
     # -------------------------------
 
-    print('Information about tesla (invoking print on instrument object):')
+    print('\nInformation about tesla (invoking print on instrument object):')
 
     print(tsla)  # prints information about the instrument
 
@@ -29,7 +29,7 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
     # Demonstrating WebSockets
     # ------------------------
 
-    print('Stream rt data for tesla using websockets:')
+    print('\nStream rt data for tesla using websockets:')
 
     ws = lm.WebSocket(cb)  # creating a websocket client object with the callback 'cb'
 

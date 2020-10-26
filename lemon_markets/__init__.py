@@ -595,7 +595,7 @@ class REST():
         return returnlist
 
     def get_m1_candlestick_latest(self,
-                                   instrument=None):
+                                  instrument=None):
         '''Get the latest m1-candlestick
 
         Args:
@@ -1111,6 +1111,8 @@ def get_accounts(token):
 
 
 def _json_response(response):
+
+    print(response.data.decode('utf-8'))
     return loads(response.data.decode('utf-8'))
 
 
