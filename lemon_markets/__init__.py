@@ -606,7 +606,7 @@ class REST():
         assert instrument is not None, 'instrument must be specified'
 
         r_latestcandle = _request(method='GET',
-                                  url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument}/candle/m1/latest/')
+                                  url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/candle/m1/latest/')
         return Candle(r_latestcandle['open'],
                       r_latestcandle['high'],
                       r_latestcandle['low'],
@@ -1114,7 +1114,16 @@ def _request(method, url, fields=None, headers=None):
 
     if (response.status > 200 and response.status < 299):
         return loads(response.data.decode('utf-8'))
-    raise AssertionError(f'Request failed with status {response.status}')
+    status_msg = ''
+    if (response.status > 299):
+        status_msg = 'redirect'
+    if (response.status > 399):
+        status_msg = 'bad client'
+    if (response.status > 499):
+        status_msg = 'server error'
+    if debug:
+        print(response.data.decode('utf-8'))
+    raise AssertionError(f'Request failed with status {response.status} ({status_msg})')
 
 
 if __name__ == '__main__':
