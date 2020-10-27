@@ -1112,7 +1112,7 @@ def _request(method, url, fields=None, headers=None):
 
     response = PoolManager(timeout=request_timeout).request(method, url, fields, headers, retries=request_retries)
 
-    if (response.status > 200 and response.status < 299):
+    if (response.status > 199 and response.status < 300):
         return loads(response.data.decode('utf-8'))
     status_msg = ''
     if (response.status > 299):
