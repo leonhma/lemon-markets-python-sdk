@@ -2,7 +2,9 @@
 '''lemon_markets, a wrapper for various lemon.markets enpoints
 
 Attributes:
-    debug (bool): Whether to print debug messages. Default is False'''
+    debug (bool): Whether to print debug messages. Default is False
+    request_timeout (float): The timeout when making requests. Default is 10.0
+    request_retries (int): how many times to retry a request. Default is 5'''
 
 from json import loads
 from multiprocessing import freeze_support, Process
@@ -13,8 +15,8 @@ from urllib3 import PoolManager
 
 
 debug = False
-
-http = PoolManager()
+request_timeout = 10.0
+request_retries = 5
 
 
 class WebSocket():
@@ -174,9 +176,9 @@ class Account():
         self.__dict__['uuid'] = account_uuid
         self.__dict__['token'] = token
         self.__dict__['_auth_header'] = {'Authorization': f'Token {self.token}'}
-        r_userdata = _json_response(http.request(method='GET',
-                                                 url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
-                                                 headers=self._auth_header))
+        r_userdata = _request(method='GET',
+                              url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
+                              headers=self._auth_header)
         self.__dict__['name'] = r_userdata['name']
         self.__dict__['type'] = r_userdata['type']
         self.__dict__['currency'] = r_userdata['currency']
@@ -205,9 +207,9 @@ class Account():
         if name not in ['name', 'type', 'currency']:
             raise AttributeError(f"'Order' object has no attribute '{name}''")
 
-        r_userdata = _json_response(http.request(method='GET',
-                                                 url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
-                                                 headers=self._auth_header))
+        r_userdata = _request(method='GET',
+                              url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
+                              headers=self._auth_header)
         self.__dict__['name'] = r_userdata['name']
         self.__dict__['type'] = r_userdata['type']
         self.__dict__['currency'] = r_userdata['currency']
@@ -258,27 +260,23 @@ class Account():
         if stop_price is None and 'stop' in order_type:
             raise AssertionError(f'Stop price has to be specified for orders of type {order_type}')
 
-        r_order = http.request_encode_body(method='POST',
-                                           url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
-                                           headers=self._auth_header,
-                                           fields={
-                                               'instrument': instrument.isin,
-                                               'side': side,
-                                               'quantity': quantity,
-                                               'valid_until': valid_until,
-                                               'type': order_type,
-                                               'limit_price': limit_price,
-                                               'stop_price': stop_price
-                                           })
-        if r_order.status != 200:
-            if debug:
-                print(f'[{ctime()}:DEBUG] Creating order failed. Returned status code: {r_order.status}')
-            return None
+        r_order = _request(method='POST',
+                           url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
+                           headers=self._auth_header,
+                           fields={
+                               'instrument': instrument.isin,
+                               'side': side,
+                               'quantity': quantity,
+                               'valid_until': valid_until,
+                               'type': order_type,
+                               'limit_price': limit_price,
+                               'stop_price': stop_price
+                           })
 
         if debug:
             print(f'[{ctime()}:DEBUG] Created order (side: {side}, instrument: {instrument}, quantity: {quantity}, ',
                   f'valid_until: {valid_until}), order_type: {order_type}, limit_price: {limit_price}, stop_price: {stop_price}')
-        return Order(_json_response(r_order)['uuid'], self.account, self.token)
+        return Order(r_order['uuid'], self.account, self.token)
 
     def delete_order(self,
                      order=None):
@@ -293,11 +291,11 @@ class Account():
 
         assert order is not None, 'order must be specified'
 
-        http.request(method='DELETE',
-                     url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/{order.id}/',
-                     headers={
-                         'Authorization': f'Token {self.token}'
-                     })
+        _request(method='DELETE',
+                 url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/{order.id}/',
+                 headers={
+                     'Authorization': f'Token {self.token}'
+                 })
 
         orderlist = self.list_orders(99999, 0)
         for item in orderlist:
@@ -334,18 +332,18 @@ class Account():
 
         assert None not in [limit, offset], 'limit and offset cannot be None'
 
-        r_orderlist = _json_response(http.request_encode_url(method='GET',
-                                                             url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
-                                                             headers=self._auth_header,
-                                                             fields={
-                                                                 'limit': limit,
-                                                                 'offset': offset,
-                                                                 'side': side,
-                                                                 'execution_type': order_type,
-                                                                 'status': status,
-                                                                 'created_at_until': created_at_until,
-                                                                 'created_at_from': created_at_from
-                                                             }))
+        r_orderlist = _request(method='GET',
+                               url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
+                               headers=self._auth_header,
+                               fields={
+                                   'limit': limit,
+                                   'offset': offset,
+                                   'side': side,
+                                   'execution_type': order_type,
+                                   'status': status,
+                                   'created_at_until': created_at_until,
+                                   'created_at_from': created_at_from
+                               })
         returnlist = [] * r_orderlist['count']
         for i, result in enumerate(r_orderlist['results']):
             limit_price = stop_price = None
@@ -389,15 +387,15 @@ class Account():
 
         assert None not in [limit, offset], 'limit and offset cannot be None'
 
-        r_transactlist = _json_response(http.request_encode_url(method='GET',
-                                                                url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/transactions/',
-                                                                headers=self._auth_header,
-                                                                fields={
-                                                                    'limit': limit,
-                                                                    'offset': offset,
-                                                                    'date_until': date_until,
-                                                                    'date_from': date_from
-                                                                }))
+        r_transactlist = _request(method='GET',
+                                  url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/transactions/',
+                                  headers=self._auth_header,
+                                  fields={
+                                      'limit': limit,
+                                      'offset': offset,
+                                      'date_until': date_until,
+                                      'date_from': date_from
+                                  })
         returnlist = [] * len(r_transactlist['results'])
         for i, result in enumerate(r_transactlist['results']):
             returnlist[i] = Transaction(result['uuid'],
@@ -443,16 +441,16 @@ class Account():
         assert instrument is not None, 'instrument must be specified'
         assert order is None or order in ['date', '-date']
 
-        r_tradeslist = _json_response(http.request_encode_url(method='GET',
-                                                              url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/',
-                                                              headers=self._auth_header,
-                                                              fields={
-                                                                  'ordering': order,
-                                                                  'date_from': date_from,
-                                                                  'date_until': date_until,
-                                                                  'limit': limit,
-                                                                  'offset': offset
-                                                              }))
+        r_tradeslist = _request(method='GET',
+                                url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/',
+                                headers=self._auth_header,
+                                fields={
+                                    'ordering': order,
+                                    'date_from': date_from,
+                                    'date_until': date_until,
+                                    'limit': limit,
+                                    'offset': offset
+                                })
         returnlist = [] * len(r_tradeslist['results'])
         for i, result in enumerate(r_tradeslist['results']):
             returnlist[i] = Trade(result['price'], result['date'])
@@ -471,9 +469,9 @@ class Account():
 
         assert instrument is not None, 'instrument must be specified'
 
-        r_latesttrade = _json_response(http.request(method='GET',
-                                                    url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/latest/',
-                                                    headers=self._auth_header))
+        r_latesttrade = _request(method='GET',
+                                 url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/latest/',
+                                 headers=self._auth_header)
         return Trade(r_latesttrade['price'], r_latesttrade['date'])
 
 
@@ -517,14 +515,14 @@ class REST():
         instrument_list = []
         for i, item in enumerate(page_list):
             page_offset = i * 1000 + offset
-            r_instrumentlist = _json_response(http.request_encode_url(method='GET',
-                                                                      url='https://api.lemon.markets/rest/v1/data/instruments/',
-                                                                      fields={
-                                                                          'search': search,
-                                                                          'type': instrument_type,
-                                                                          'limit': item,
-                                                                          'offset': page_offset
-                                                                      }))
+            r_instrumentlist = _request(method='GET',
+                                        url='https://api.lemon.markets/rest/v1/data/instruments/',
+                                        fields={
+                                            'search': search,
+                                            'type': instrument_type,
+                                            'limit': item,
+                                            'offset': page_offset
+                                        })
             instrument_list += r_instrumentlist['results']
             if r_instrumentlist['next'] == 'null':
                 break
@@ -573,15 +571,15 @@ class REST():
         m1candles_list = []
         for i, item in enumerate(pages_list):
             page_offset = i * 1000 + offset
-            r_m1candles = _json_response(http.request_encode_url(method='GET',
-                                                                 url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/candle/m1/',
-                                                                 fields={
-                                                                     'ordering': ordering,
-                                                                     'date_from': date_from,
-                                                                     'date_until': date_until,
-                                                                     'limit': item,
-                                                                     'offset': page_offset
-                                                                 }))
+            r_m1candles = _request(method='GET',
+                                   url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/candle/m1/',
+                                   fields={
+                                       'ordering': ordering,
+                                       'date_from': date_from,
+                                       'date_until': date_until,
+                                       'limit': item,
+                                       'offset': page_offset
+                                   })
             m1candles_list += r_m1candles['results']
             if r_m1candles['next'] == 'null':
                 break
@@ -607,8 +605,8 @@ class REST():
 
         assert instrument is not None, 'instrument must be specified'
 
-        r_latestcandle = _json_response(http.request(method='GET',
-                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument}/candle/m1/latest/'))
+        r_latestcandle = _request(method='GET',
+                                  url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument}/candle/m1/latest/')
         return Candle(r_latestcandle['open'],
                       r_latestcandle['high'],
                       r_latestcandle['low'],
@@ -704,8 +702,8 @@ class Instrument():
         if name not in ['wkn', 'title', 'type', 'symbol']:
             raise AttributeError(f"'Instrument' object has no attribute '{name}''")
 
-        instrumentinfo = _json_response(http.request(method='GET',
-                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{self.isin}/'))
+        instrumentinfo = _request(method='GET',
+                                  url=f'https://api.lemon.markets/rest/v1/data/instruments/{self.isin}/')
         self.__dict__['wkn'] = instrumentinfo['wkn']
         self.__dict__['title'] = instrumentinfo['title']
         self.__dict__['type'] = instrumentinfo['type']
@@ -786,9 +784,9 @@ class Transaction():
         if name not in ['name', 'amount', 'order_volume', 'order_isin', 'time']:
             raise AttributeError(f"'Transaction' object has no attribute '{name}''")
 
-        transactioninfo = _json_response(http.request(method='GET',
-                                                      url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.isin}/transactions/{self.id}/',
-                                                      headers='{"Authorization": "Token %s"}' % self.account.token))
+        transactioninfo = _request(method='GET',
+                                   url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.isin}/transactions/{self.id}/',
+                                   headers='{"Authorization": "Token %s"}' % self.account.token)
         self.__dict__['name'] = transactioninfo['name']
         self.__dict__['amount'] = transactioninfo['amount']
         self.__dict__['order_volume'] = transactioninfo['related_order']['volume']
@@ -917,9 +915,9 @@ class Order():
 
             raise AttributeError(f"'Order' object has no attribute '{name}''")
 
-        orderinfo = _json_response(http.request(method='GET',
-                                                url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/orders/{self.id}/',
-                                                headers='{"Authorization": "Token %s"}' % self.account.token))
+        orderinfo = _request(method='GET',
+                             url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/orders/{self.id}/',
+                             headers='{"Authorization": "Token %s"}' % self.account.token)
         self.__dict__['quantity'] = orderinfo['quantity']
         self.__dict__['type'] = orderinfo['type']
         self.__dict__['limit_price'] = orderinfo['stop_price'] = None
@@ -1016,9 +1014,9 @@ class Portfolio:
         Returns:
             list (Position): A list of all positions
         '''
-        r_positions = _json_response(http.request(method='GET',
-                                                  url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/aggregated',
-                                                  headers=self.account._auth_header))
+        r_positions = _request(method='GET',
+                               url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/aggregated',
+                               headers=self.account._auth_header)
         returnpositions = [] * len(r_positions)
         for i, result in enumerate(r_positions):
             returnpositions[i] = self.Position(result['quantity'],
@@ -1050,13 +1048,13 @@ class Portfolio:
         portfolio_list = []
         for i, item in enumerate(pages_list):
             page_offset = i * 1000 + offset
-            r_aggregated = _json_response(http.request_encode_url(method='GET',
-                                                                  url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/',
-                                                                  headers=self._auth_header,
-                                                                  fields={
-                                                                      'limit': item,
-                                                                      'offset': page_offset
-                                                                  }))
+            r_aggregated = _request(method='GET',
+                                    url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/',
+                                    headers=self._auth_header,
+                                    fields={
+                                        'limit': item,
+                                        'offset': page_offset
+                                    })
             portfolio_list += r_aggregated['results']
             if r_aggregated['next'] == 'null':
                 break
@@ -1080,9 +1078,9 @@ class Portfolio:
 
         assert instrument is not None, 'instrument must be specified'
 
-        r_instrumentpos = _json_response(http.request(method='GET',
-                                                      url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/{instrument.isin}/aggregated/',
-                                                      headers=self.account._auth_header))
+        r_instrumentpos = _request(method='GET',
+                                   url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/{instrument.isin}/aggregated/',
+                                   headers=self.account._auth_header)
         return self.Position(r_instrumentpos['quantity'],
                              r_instrumentpos['average_price'],
                              Instrument(r_instrumentpos['instrument']['isin']),
@@ -1099,9 +1097,9 @@ def get_accounts(token):
         list (Account): Accounts associated with the token
     '''
 
-    r_accountlist = _json_response(http.request(method='GET',
-                                                url='https://api.lemon.markets/rest/v1/accounts/',
-                                                headers={'Authorization': f'Token {token}'}))
+    r_accountlist = _request(method='GET',
+                             url='https://api.lemon.markets/rest/v1/accounts/',
+                             headers={'Authorization': f'Token {token}'})
     accountlist = []
     for i in r_accountlist['results']:
         accountlist.append(Account(i['uuid'], token))
@@ -1110,10 +1108,13 @@ def get_accounts(token):
     return accountlist
 
 
-def _json_response(response):
+def _request(method, url, fields=None, headers=None):
 
-    print(response.data.decode('utf-8'))
-    return loads(response.data.decode('utf-8'))
+    response = PoolManager(timeout=request_timeout).request(method, url, fields, headers, retries=request_retries)
+
+    if (response.status > 200 and response.status < 299):
+        return loads(response.data.decode('utf-8'))
+    raise AssertionError(f'Request failed with status {response.status}')
 
 
 if __name__ == '__main__':

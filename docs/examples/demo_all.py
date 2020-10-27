@@ -16,7 +16,6 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
     tsla = lm.Instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
 
     # -------------------------------
-    sleep(10)
     # Printing information about objects
     # -------------------------------
 
