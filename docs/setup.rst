@@ -10,13 +10,13 @@ To install the latest stable version of this package, run the following command.
 
 .. code-block::
 
-   python3 -m pip install --upgrade lemon_markets
+   python3 -m pip install --upgrade lemon_markets_python_sdk
 
 To install the latest (development) version of this package, just add one parameter.
 
 .. code-block::
 
-   python3 -m pip install --upgrade --index-url https://test.pypi.org/simple/lemon_markets_python_sdk
+   python3 -m pip install --upgrade --index-url https://test.pypi.org/simple/ lemon_markets_python_sdk
 
 Directly from the GitHub repository
 -----------------------------------
@@ -25,7 +25,7 @@ Also using pip, you can change the url, to download the github repo to get the l
 
 .. code-block::
 
-   python3 -m pip install --upgrade git+https://github.com/leonhma/lemon-markets-python-sdk.git#egg=lemon_markets_python_sdk
+   python3 -m pip install --upgrade git+https://github.com/leonhma/lemon-markets-python-sdk-.git#egg=lemon_markets_python_sdk
 
 Getting your personal access-token
 ==================================
