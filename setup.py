@@ -11,11 +11,11 @@ with open(README, "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lemon_markets",  # placeholder (name of repo)
+    name="lemon_markets_python_sdk",  # placeholder (name of repo)
     version="<>",  # placeholder (tag of release)
     author="leonhma",  # placeholder (owner of repo)
     description="A wrapper for various endpoints at lemon.markets",  # placeholder (description of repo)
-    url="https://github.com/leonhma/lemon_markets",  # placeholder (url of repo)
+    url="https://github.com/leonhma/lemon-markets-python-sdk-",  # placeholder (url of repo)
     long_description=long_description,
     long_description_content_type=README_MIME,
     packages=setuptools.find_packages(),

@@ -2,7 +2,7 @@
 
 from time import sleep  # some other dependencies
 
-import lemon_markets as lm  # importing lemon_markets as lm
+import lemon_markets_python_sdk as lm  # importing lemon_markets as lm
 
 
 def cb(instrument, trade):  # defining our callback
@@ -11,11 +11,12 @@ def cb(instrument, trade):  # defining our callback
 
 if __name__ == '__main__':  # this is mandatory if you want to use websockets, as it will start multiple threads
 
-    lm.debug = True  # enabling debug messages
+    lm.debug = True  # enabling debug messagesn
 
     tsla = lm.Instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
 
     # -------------------------------
+    sleep(10)
     # Printing information about objects
     # -------------------------------
 
