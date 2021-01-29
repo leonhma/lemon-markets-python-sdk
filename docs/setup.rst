@@ -25,7 +25,7 @@ Also using pip, you can change the url, to download the github repo to get the l
 
 .. code-block::
 
-   python3 -m pip install --upgrade git+https://github.com/leonhma/lemon-markets-python-sdk-.git#egg=lemon_markets_python_sdk
+   python3 -m pip install --upgrade git+https://github.com/leonhma/lemon-markets-python-sdk.git#egg=lemon_markets_python_sdk
 
 Getting your personal access-token
 ==================================
