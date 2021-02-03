@@ -1,3 +1,4 @@
+*This currently is Work in Progress*
 This is a template that contains workflows to automatically update documentation using sphinx, push it to github pages, upload release binaries as assets and do linting using pylama
 
 # How to use this template
