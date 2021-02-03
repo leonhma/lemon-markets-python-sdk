@@ -100,7 +100,7 @@ class WebSocket():
             instrument (Instrument, required): The Instrument you want to subscribe to
 
         Note:
-            The Instrument can be obtained through calling :meth:`lemon_markets.REST.list_instruments`
+            The Instrument can be obtained through calling :meth:`lemon_markets_python_sdk.REST.list_instruments`
         '''
 
         assert instrument is not None, 'instrument must be specified'
@@ -154,7 +154,7 @@ class Account():
 
     Note:
         You are most likely to never use this, since a list of all Accounts for
-        a token can be obtained by calling :func:`lemon_markets.get_accounts`
+        a token can be obtained by calling :func:`lemon_markets_python_sdk.get_accounts`
 
     Attributes:
         uuid (str): The account uuid
@@ -240,8 +240,8 @@ class Account():
             Order: The Order object representing the order
 
         Note:
-            The order can also be obtained by calling :meth:`lemon_markets.Account.list_orders`.
-            Also the instrument is returned when calling :meth:`lemon_markets.REST.list_instruments`
+            The order can also be obtained by calling :meth:`lemon_markets_python_sdk.Account.list_orders`.
+            Also the instrument is returned when calling :meth:`lemon_markets_python_sdk.REST.list_instruments`
         '''
 
         if valid_until is None:
@@ -967,7 +967,7 @@ class Portfolio:
         account (Account, required): The Account object representing the account
 
     Note:
-        This class is not intended to be used directly. You can get it by calling :meth:`lemon_markets.Account::get_portfolio`
+        This class is not intended to be used directly. You can get it by calling :meth:`lemon_markets_python_sdk.Account::get_portfolio`
     '''
 
     class Position:
@@ -980,8 +980,8 @@ class Portfolio:
             id (str, required): The id of the position
 
         Note:
-            This class is not intended to be called directly. It is the return of :meth:`lemon_markets.Portfolio.get_aggregated`,
-            :meth:`lemon_markets.Portfolio.get_seperated` and :meth:`lemon_markets.Portfolio.get_instrument`
+            This class is not intended to be called directly. It is the return of :meth:`lemon_markets_python_sdk.Portfolio.get_aggregated`,
+            :meth:`lemon_markets_python_sdk.Portfolio.get_seperated` and :meth:`lemon_markets_python_sdk.Portfolio.get_instrument`
         '''
 
         def __init__(self, quantity=None, avg_price=None, instrument=None, id=None):

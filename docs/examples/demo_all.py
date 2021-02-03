@@ -13,7 +13,7 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
 
     lm.debug = True  # enabling debug messagesn
 
-    acnt = lm.get_accounts('4b389590146c6a25f46ceec7c4b73a00ea1cae71')[0]  # get the first (and only) account associated with the token
+    acnt = lm.get_accounts('c8255dbbbe7fe04150c4060aadbf88baa1c77506')[0]  # get the first (and only) account associated with the token
     tsla = acnt.get_instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
 
     # -------------------------------

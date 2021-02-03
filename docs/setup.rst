@@ -22,6 +22,7 @@ Directly from the GitHub repository
 -----------------------------------
 
 Also using pip, you can change the url, to download the github repo to get the latest possible version of this package.
+This would require you to also install git.
 
 .. code-block::
 

@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = "lemon_markets_python_sdk"
 copyright = "GNU General Public License v3.0"
 author = "leonhma"
-release = "<>"
+release = "0.0.1"  # TODO change
 
 # -- General configuration ---------------------------------------------------
 
@@ -25,7 +25,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
-    "sphinx.ext.intersphinx"
+    "sphinx.ext.intersphinx",
+    "sphinxcontrib.programoutput"
 ]
 
 # Add any paths that contain templates here, relative to this directory.

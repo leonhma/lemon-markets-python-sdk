@@ -7,3 +7,7 @@ Just copy and paste the code below:
 .. literalinclude:: examples/demo_all.py
    :language: python
    :linenos:
+
+Here's the output:
+
+.. program-output:: python examples/demo_all.py

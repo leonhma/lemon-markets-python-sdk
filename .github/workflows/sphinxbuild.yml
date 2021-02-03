@@ -20,7 +20,7 @@ jobs:
           git checkout -b gh-pages
           THEME=$(grep -oP '(?<=html_theme = ").+?(?=")' docs/conf.py)
           python3 -m pip install --upgrade pip
-          pip install sphinx $THEME
+          pip install sphinx $THEME sphinxcontrib-programoutput .
           python3 setup.py install
       - name: Change conf.py version
         run: |
