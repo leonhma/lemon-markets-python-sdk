@@ -1,0 +1,1166 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Reference &mdash; lemon_markets_python_sdk  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Getting started" href="get_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> lemon_markets_python_sdk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Installing it</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html#getting-your-personal-access-token">Getting your personal access-token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">lemon_markets_python_sdk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-lemon_markets_python_sdk">
+<span id="reference"></span><h1>Reference<a class="headerlink" href="#module-lemon_markets_python_sdk" title="Permalink to this headline">¶</a></h1>
+<p>lemon_markets, a wrapper for various lemon.markets enpoints</p>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.debug">
+<code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">debug</code><a class="headerlink" href="#lemon_markets_python_sdk.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to print debug messages. Default is False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Account">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account_uuid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">currency</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives you acess to account data from lemon.markets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account_uuid</strong> (<em>str</em><em>, </em><em>required</em>) – The UUID of the account</p></li>
+<li><p><strong>token</strong> (<em>str</em><em>, </em><em>required</em>) – The token used to authenticate with the account</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are most likely to never use this, since a list of all Accounts for
+a token can be obtained by calling <a class="reference internal" href="#lemon_markets_python_sdk.get_accounts" title="lemon_markets_python_sdk.get_accounts"><code class="xref py py-func docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.get_accounts()</span></code></a></p>
+</div>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Account.uuid">
+<code class="sig-name descname">uuid</code><a class="headerlink" href="#lemon_markets_python_sdk.Account.uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>The account uuid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Account.token">
+<code class="sig-name descname">token</code><a class="headerlink" href="#lemon_markets_python_sdk.Account.token" title="Permalink to this definition">¶</a></dt>
+<dd><p>The token used to authenticate requests</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Account.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#lemon_markets_python_sdk.Account.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Human-readable name of the account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Account.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#lemon_markets_python_sdk.Account.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Currently only ‘demo’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Account.currency">
+<code class="sig-name descname">currency</code><a class="headerlink" href="#lemon_markets_python_sdk.Account.currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>The currency of your account, e.g. ‘USD’, ‘EUR’, …</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are not able to set attributes for this class</p>
+</div>
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.create_order">
+<code class="sig-name descname">create_order</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">side</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">quantity</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">valid_until</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">limit_price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stop_price</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.create_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>side</strong> (<em>str</em><em>, </em><em>required</em>) – Either ‘buy’ or ‘sell. It’s quite obvious</p></li>
+<li><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument you want to create an order for</p></li>
+<li><p><strong>quantity</strong> (<em>int</em><em>, </em><em>required</em>) – The amount you want to buy or sell</p></li>
+<li><p><strong>order_type</strong> (<em>str</em><em>, </em><em>required</em>) – Either ‘market’, ‘stop_market’, ‘limit’ or ‘stop_limit’</p></li>
+<li><p><strong>valid_until</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp you want the order to be valid until</p></li>
+<li><p><strong>limit_price</strong> (<em>float</em><em>, </em><em>required if order_type is 'limit'</em><em> or </em><em>'stop_limit'</em>) – The order will be placed at &lt;limit_price&gt; or better</p></li>
+<li><p><strong>stop_price</strong> (<em>float</em><em>, </em><em>required if order_type is 'stop'</em><em> or </em><em>'stop_limit'</em>) – The price the order will be placed at</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Order object representing the order</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Order" title="lemon_markets_python_sdk.Order">Order</a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The order can also be obtained by calling <a class="reference internal" href="#lemon_markets_python_sdk.Account.list_orders" title="lemon_markets_python_sdk.Account.list_orders"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.Account.list_orders()</span></code></a>.
+Also the instrument is returned when calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.REST.list_instruments()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.delete_order">
+<code class="sig-name descname">delete_order</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.delete_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the specified order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Order" title="lemon_markets_python_sdk.Order"><em>Order</em></a><em>, </em><em>required</em>) – The Order object of the order</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful, otherwise False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.get_latest_trade">
+<code class="sig-name descname">get_latest_trade</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.get_latest_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns info on the latest trade for the specified symbol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument you want to get the latest trade from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Trade object containing the price and timestamp of the latest trade</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Trade" title="lemon_markets_python_sdk.Trade">Trade</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.get_m1_candlestick_latest">
+<code class="sig-name descname">get_m1_candlestick_latest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.get_m1_candlestick_latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the latest m1-candlestick</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument you want to get the latest candle from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Candle object containing information about the latest candle</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Candle" title="lemon_markets_python_sdk.Candle">Candle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.get_m1_candlesticks">
+<code class="sig-name descname">get_m1_candlesticks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ordering</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date_from</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date_until</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.get_m1_candlesticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of 1-minute-granularity candles for today</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument to get data for</p></li>
+<li><p><strong>ordering</strong> (<em>str</em><em>, </em><em>optional</em>) – Either ‘date’ or ‘-date’ depending on if you want to get newest or oldest first. Default is unordered</p></li>
+<li><p><strong>date_from</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp after which all candles listed should have been recorded</p></li>
+<li><p><strong>date_to</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp before which all candles listed should have been recorded</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of candles to return. Default in 1000</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – How many of the first results to skip</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing the candles and information about them</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Candle" title="lemon_markets_python_sdk.Candle">Candle</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.get_portfolio">
+<code class="sig-name descname">get_portfolio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.get_portfolio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Portfolio object representing the account’s portfolio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The Portfolio object representing the account’s portfolio’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#lemon_markets_python_sdk.Portfolio" title="lemon_markets_python_sdk.Portfolio">Portfolio</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.get_trades_intraday">
+<code class="sig-name descname">get_trades_intraday</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date_from</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date_until</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.get_trades_intraday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of trades for a specific instrument for today</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument to get data from</p></li>
+<li><p><strong>order</strong> (<em>str</em><em>, </em><em>optional</em>) – The ordering of your data. Either ‘date’ or ‘-date’,
+depending on if you want to get newest or oldest first. Default is unordered</p></li>
+<li><p><strong>date_from</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp after which all trades listed should have happened</p></li>
+<li><p><strong>date_to</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp before which all trades listed should have happened</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of trades to return. Default in 1000</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – How many of the first results to skip</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing all trades with price and unix time</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Trade" title="lemon_markets_python_sdk.Trade">Trade</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.list_instruments">
+<code class="sig-name descname">list_instruments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">search</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">instrument_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.list_instruments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of all available instruments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search</strong> (<em>str</em><em>, </em><em>optional</em>) – Search for isin, wkn or title</p></li>
+<li><p><strong>instrument_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Either ‘stocks’, ‘bonds’ or ‘fonds’</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of instruments to return. Default is 1000</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of first results to skip</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing all instruments and information about them</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument">Instrument</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.list_orders">
+<code class="sig-name descname">list_orders</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">side</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">status</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">created_at_until</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">created_at_from</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.list_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>List orders in your account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – How many results to return at most</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – The &lt;offset&gt; first results are skipped</p></li>
+<li><p><strong>side</strong> (<em>str</em><em>, </em><em>optional</em>) – Filter for orders of side ‘buy’ or ‘sell’</p></li>
+<li><p><strong>order_type</strong> (<em>str</em><em>, </em><em>optional</em>) – The type of orders you want to filter for, e.g. ‘limit’, ‘stop_limit’, ‘market’ or ‘stop_market’</p></li>
+<li><p><strong>status</strong> (<em>string</em><em>, </em><em>optional</em>) – Filter for order status ‘executed’, ‘open’, ‘deleted’, ‘in_process’ or ‘expired’</p></li>
+<li><p><strong>created_at_until</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp before which the orders you want to filter for were created</p></li>
+<li><p><strong>created_at_from</strong> (<em>float</em><em>, </em><em>optional</em>) – The unix timestamp after which the orders you want to filter for were created</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing all orders and information about them</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Order" title="lemon_markets_python_sdk.Order">Order</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Account.list_transactions">
+<code class="sig-name descname">list_transactions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">date_from</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date_until</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Account.list_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>List transactions in your account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of results to return. Default is 200</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – How many of the first results to skip</p></li>
+<li><p><strong>date_from</strong> (<em>float</em><em>, </em><em>optional</em>) – the unix time after which the filtered transactions were made</p></li>
+<li><p><strong>date_until</strong> (<em>float</em><em>, </em><em>optional</em>) – the unix timestamp before which the filtered transactions were made</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of transactions and their information</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Transaction" title="lemon_markets_python_sdk.Transaction">Transaction</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Candle">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Candle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">open</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">high</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">low</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">close</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Candle" title="Permalink to this definition">¶</a></dt>
+<dd><p>A primitive class representing a candle</p>
+<p>You will never use this class directly, it is the return of some functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>open</strong> (<em>int</em><em>, </em><em>required</em>) – The open price</p></li>
+<li><p><strong>high</strong> (<em>int</em><em>, </em><em>required</em>) – The high price</p></li>
+<li><p><strong>low</strong> (<em>int</em><em>, </em><em>required</em>) – The low price</p></li>
+<li><p><strong>close</strong> (<em>int</em><em>, </em><em>required</em>) – The close price</p></li>
+<li><p><strong>width</strong> (<em>int</em><em>, </em><em>required</em>) – The time in seconds the candle represents (in your graph horizontally)</p></li>
+<li><p><strong>time</strong> (<em>float</em><em>, </em><em>required</em>) – The unix time stamp the candle was created at</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.open">
+<code class="sig-name descname">open</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>The open price</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.high">
+<code class="sig-name descname">high</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.high" title="Permalink to this definition">¶</a></dt>
+<dd><p>The high price</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.low">
+<code class="sig-name descname">low</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.low" title="Permalink to this definition">¶</a></dt>
+<dd><p>The low price</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.close">
+<code class="sig-name descname">close</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>The close price</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time in seconds the candle represents (in your graph horizontally)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Candle.time">
+<code class="sig-name descname">time</code><a class="headerlink" href="#lemon_markets_python_sdk.Candle.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unix time stamp the candle was created at</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Further information on the time argument and attribute is needed</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Instrument">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Instrument</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">isin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wkn</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing an instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>isin</strong> (<em>str</em><em>, </em><em>required</em>) – The isin of the instrument</p></li>
+<li><p><strong>token</strong> (<em>str</em><em>, </em><em>required</em>) – The token of your account/strategy, should look like a random string.
+Note: Leave out the ‘Token’ word</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not specify more properties than just isin and token. The instrument’s other
+properties will automatically be set</p>
+</div>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Instrument.isin">
+<code class="sig-name descname">isin</code><a class="headerlink" href="#lemon_markets_python_sdk.Instrument.isin" title="Permalink to this definition">¶</a></dt>
+<dd><p>The isin of the instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Instrument.wkn">
+<code class="sig-name descname">wkn</code><a class="headerlink" href="#lemon_markets_python_sdk.Instrument.wkn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The instrument’s wkn</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Instrument.title">
+<code class="sig-name descname">title</code><a class="headerlink" href="#lemon_markets_python_sdk.Instrument.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sanity-friendly description of the instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Instrument.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#lemon_markets_python_sdk.Instrument.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of the instrument. Possible values are ‘stocks’, ‘bonds’, … (more information needed)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Instrument.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#lemon_markets_python_sdk.Instrument.symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The symbol representing the instrument. For tesla this is ‘TSLA’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can only change the isin attribute, which will also update all other attributes</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Order">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Order</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">quantity</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">limit_price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stop_price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">side</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">created_at</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">processed_at</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">processed_quantity</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">avg_price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">valid_until</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Also a very (it’s ironic) simple class for holding orders</p>
+<p>You will never directly use this class, it is the return of some functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em><em>, </em><em>required</em>) – The id of the transaction</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account"><em>Account</em></a><em>, </em><em>required</em>) – The account</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not specify more properties than isin and account. The order’s properties will automatically be set</p>
+</div>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of the order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.account">
+<code class="sig-name descname">account</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.account" title="Permalink to this definition">¶</a></dt>
+<dd><p>The account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account">Account</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.quantity">
+<code class="sig-name descname">quantity</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.quantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity of the instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.limit_price">
+<code class="sig-name descname">limit_price</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.limit_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>The limit price of the order. None if type is ‘market’ or ‘stop_market’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.stop_price">
+<code class="sig-name descname">stop_price</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.stop_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>The stop price of the order. None if type is ‘market’ or ‘limit’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of the order. Either ‘market’, ‘stop_market’, ‘limit’ or ‘stop_limit’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.side">
+<code class="sig-name descname">side</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.side" title="Permalink to this definition">¶</a></dt>
+<dd><p>The side of the order. Either ‘buy’ or ‘sell’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.instrument">
+<code class="sig-name descname">instrument</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Instrument object representing the instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument">Instrument</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.created_at">
+<code class="sig-name descname">created_at</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.created_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time the order was created at</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.processed_at">
+<code class="sig-name descname">processed_at</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.processed_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>the time the (first part of the) order was executed (more information needed)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.processed_quantity">
+<code class="sig-name descname">processed_quantity</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.processed_quantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The quantity of the order that was executed (this is due to ‘partial execution’,
+means that the order is executed in ‘parts’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.avg_price">
+<code class="sig-name descname">avg_price</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.avg_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>The weighted average price of all executed partial orders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Order.valid_until">
+<code class="sig-name descname">valid_until</code><a class="headerlink" href="#lemon_markets_python_sdk.Order.valid_until" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time untul which the order is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can not change any of the attributes</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Portfolio">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Portfolio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Portfolio" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object representing a portfolio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>account</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account"><em>Account</em></a><em>, </em><em>required</em>) – The Account object representing the account</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class is not intended to be used directly. You can get it by calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.Account::get_portfolio()</span></code></p>
+</div>
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Portfolio.Position">
+<em class="property">class </em><code class="sig-name descname">Position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quantity</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">avg_price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Portfolio.Position" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class representing a position in your portfolio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quantity</strong> (<em>int</em><em>, </em><em>required</em>) – The quantity of the instrument in the position</p></li>
+<li><p><strong>avg_price</strong> (<em>float</em><em>, </em><em>required</em>) – The average price of one instrument in the position</p></li>
+<li><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The instrument in the position</p></li>
+<li><p><strong>id</strong> (<em>str</em><em>, </em><em>required</em>) – The id of the position</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class is not intended to be called directly. It is the return of <a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.get_aggregated" title="lemon_markets_python_sdk.Portfolio.get_aggregated"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.Portfolio.get_aggregated()</span></code></a>,
+<a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.get_seperated" title="lemon_markets_python_sdk.Portfolio.get_seperated"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.Portfolio.get_seperated()</span></code></a> and <a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.get_instrument" title="lemon_markets_python_sdk.Portfolio.get_instrument"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.Portfolio.get_instrument()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Portfolio.get_aggregated">
+<code class="sig-name descname">get_aggregated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Portfolio.get_aggregated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all positions in the account aggregated on instruments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of all positions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.Position" title="lemon_markets_python_sdk.Portfolio.Position">Position</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Portfolio.get_instrument">
+<code class="sig-name descname">get_instrument</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Portfolio.get_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the aggregated position for one instrument in your account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument for which to return it’s position</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Position object representing the aggregated position for the instrument</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.Position" title="lemon_markets_python_sdk.Portfolio.Position">Position</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.Portfolio.get_seperated">
+<code class="sig-name descname">get_seperated</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Portfolio.get_seperated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all positions in the Portfolio based on orders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum of results to return. Default is 200</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – How many of the first results to skip. Default is 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of positions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Portfolio.Position" title="lemon_markets_python_sdk.Portfolio.Position">Position</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Trade">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Trade</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">price</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>A primitive class representing a trade</p>
+<p>You will never use this class directly, it is the return of some functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>price</strong> (<em>float</em>) – The price</p></li>
+<li><p><strong>time</strong> (<em>float</em>) – The unix timestamp</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Trade.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#lemon_markets_python_sdk.Trade.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>The price</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Trade.time">
+<code class="sig-name descname">time</code><a class="headerlink" href="#lemon_markets_python_sdk.Trade.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unix time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.Transaction">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">Transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">amount</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order_volume</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">time</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a transaction</p>
+<p>You will never directly use this class, it is the return of some functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em><em>, </em><em>required</em>) – The id of the transaction</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account"><em>Account</em></a><em>, </em><em>required</em>) – The account</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not specify more properties than isin and account. The transactions’s properties will automatically be set</p>
+</div>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of the order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.account">
+<code class="sig-name descname">account</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.account" title="Permalink to this definition">¶</a></dt>
+<dd><p>The account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account">Account</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A human-readable name for the transaction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.amount">
+<code class="sig-name descname">amount</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of money in your currency that was moved</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.order_volume">
+<code class="sig-name descname">order_volume</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.order_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>The volume of the order in your currency</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.instrument">
+<code class="sig-name descname">instrument</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Instrument related to this order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument">Instrument</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.Transaction.time">
+<code class="sig-name descname">time</code><a class="headerlink" href="#lemon_markets_python_sdk.Transaction.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unix time when the transaction was executed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can not change any of the attributes</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="lemon_markets_python_sdk.WebSocket">
+<em class="property">class </em><code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">WebSocket</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">callback</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">frequency_limit</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives acess to the websocket server at lemon.markets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>function</em><em>, </em><em>required</em>) – Function to call when websocket data is received. It should have 2 arguments:
+instrument (Instrument): the Instrument for which data was received and
+trade (Trade): the Trade that contains time and price</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – The timeout in seconds after which the websocket will reconnect. Default is 10</p></li>
+<li><p><strong>frequency_limit</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum frequency in seconds at which the callback should be called. Default is 0 (no limit)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Leave out the parentheses when passing your callback function!</p>
+</div>
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.WebSocket.timeout">
+<code class="sig-name descname">timeout</code><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket.timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>The timout after which to reconnect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.WebSocket.callback">
+<code class="sig-name descname">callback</code><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function to call when data is received</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lemon_markets_python_sdk.WebSocket.subscribed">
+<code class="sig-name descname">subscribed</code><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket.subscribed" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list containing all Instruments subscribed to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument">Instrument</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.WebSocket.subscribe">
+<code class="sig-name descname">subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to realtime data from the given instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument you want to subscribe to</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Instrument can be obtained through calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">lemon_markets_python_sdk.REST.list_instruments()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lemon_markets_python_sdk.WebSocket.unsubscribe">
+<code class="sig-name descname">unsubscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instrument</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.WebSocket.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsubscribe from realtime data for the given instrument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instrument</strong> (<a class="reference internal" href="#lemon_markets_python_sdk.Instrument" title="lemon_markets_python_sdk.Instrument"><em>Instrument</em></a><em>, </em><em>required</em>) – The Instrument you want to unsubscribe from</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="lemon_markets_python_sdk.get_accounts">
+<code class="sig-prename descclassname">lemon_markets_python_sdk.</code><code class="sig-name descname">get_accounts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lemon_markets_python_sdk.get_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get accounts associated with the given token</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> (<em>str</em><em>, </em><em>required</em>) – The token to search for connected accounts</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Accounts associated with the token</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (<a class="reference internal" href="#lemon_markets_python_sdk.Account" title="lemon_markets_python_sdk.Account">Account</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="get_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright GNU General Public License v3.0.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
