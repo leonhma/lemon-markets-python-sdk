@@ -13,7 +13,8 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
 
     lm.debug = True  # enabling debug messagesn
 
-    tsla = lm.Instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
+    acnt = lm.get_accounts('4b389590146c6a25f46ceec7c4b73a00ea1cae71')[0]  # get the first (and only) account associated with the token
+    tsla = acnt.get_instrument('US88160R1014')  # creating an instrument object corresponding to tesla (will be used throughout this tutorial)
 
     # -------------------------------
     sleep(10)
@@ -46,8 +47,6 @@ if __name__ == '__main__':  # this is mandatory if you want to use websockets, a
 
     print('Getting the highest price over the last minute for tesla')
 
-    rst = lm.REST()  # initiating the REST object
-
-    candle = rst.get_m1_candlestick_latest(tsla)  # get the latest ohlc candlestick for tesla
+    candle = acnt.get_m1_candlestick_latest(tsla)  # get the latest ohlc candlestick for tesla
 
     print(candle.high)  # print the highest price over the last minute

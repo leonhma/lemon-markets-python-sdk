@@ -49,7 +49,7 @@ class WebSocket():
         self.subscribed = []
 
         if debug:
-            print(f'[{ctime()}:DEBUG] Initialised WebSocket class')
+            print(f'[{ctime()}, WebSocket.__init__] Initialised WebSocket class')
 
     def __str__(self):
 
@@ -65,14 +65,14 @@ class WebSocket():
             if self._ws_process.is_alive():
                 self._ws_process.terminate()
                 if debug:
-                    print(f'[{ctime()}:DEBUG] Stopped worker because class reference was deleted')
+                    print(f'[{ctime()}, WebSocket.__del__] Stopped worker because class reference was deleted')
         except Exception:
             pass
 
     def _ws_worker(self):
 
         if debug:
-            print(f'[{ctime()}:DEBUG] Opened websocket connection')
+            print(f'[{ctime()}, WebSocket._ws_worker] Opened websocket connection')
         while True:
             ws = create_connection('ws://api.lemon.markets/streams/v1/marketdata', timeout=self.timeout)
             for each in self.subscribed:
@@ -90,7 +90,7 @@ class WebSocket():
                     break
             ws.close()
             if debug:
-                print(f'[{ctime()}:DEBUG] Reopening websocket connection (caused by timeout ({self._timeout})',
+                print(f'[{ctime()}, WebSocket._ws_worker] Reopening websocket connection (caused by timeout ({self._timeout})',
                       'or serverside disconnect)')
 
     def subscribe(self, instrument=None):
@@ -118,7 +118,7 @@ class WebSocket():
                 debug_str += 'Started worker'
 
         if debug:
-            print(f'[{ctime()}:DEBUG] {debug_str}')
+            print(f'[{ctime()}, WebSocket.subscribe] {debug_str}')
 
     def unsubscribe(self, instrument=None):
         '''Unsubscribe from realtime data for the given instrument
@@ -142,7 +142,7 @@ class WebSocket():
             if debug:
                 debug_str += 'Stopped worker (no websockets active)'
 
-        print(f'[{ctime()}:DEBUG] {debug_str}')
+        print(f'[{ctime()}, WebSocket.unsubscribe] {debug_str}')
 
 
 class Account():
@@ -167,47 +167,45 @@ class Account():
         You are not able to set attributes for this class
     '''
 
-    def __init__(self, account_uuid=None, token=None):
+    def __init__(self,
+                 account_uuid=None,
+                 token=None,
+                 name=None,
+                 type=None,
+                 currency=None,):
 
         assert None not in [account_uuid, token], 'account_uuid and token must be specified. debug_flag cannot be None'
 
         self.__dict__['uuid'] = account_uuid
         self.__dict__['token'] = token
         self.__dict__['_auth_header'] = {'Authorization': f'Token {self.token}'}
-        r_userdata = _json_response(http.request(method='GET',
-                                                 url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
-                                                 headers=self._auth_header))
-        self.__dict__['name'] = r_userdata['name']
-        self.__dict__['type'] = r_userdata['type']
-        self.__dict__['currency'] = r_userdata['currency']
+
+        if None not in [name, type, currency]:
+            self.__dict__['name'] = name
+            self.__dict__['type'] = type
+            self.__dict__['currency'] = currency
 
     def __str__(self):
 
-        return f'account at lemon.markets,'\
-            f'uuid: {self.uuid},'\
-            f'token: {self.token},'\
-            f'name: {self.name},'\
-            f'type: {self.type},'\
+        return f'account at lemon.markets. '\
+            f'uuid: {self.uuid}, '\
+            f'token: {self.token}, '\
+            f'name: {self.name}, '\
+            f'type: {self.type}, '\
             f'currency: {self.currency}'
 
     def __repr__(self):
-
-        return f'account at lemon.markets,'\
-            f'uuid: {self.uuid},'\
-            f'token: {self.token},'\
-            f'name: {self.name},'\
-            f'type: {self.type},'\
-            f'currency: {self.currency}'
+        return str(self)
 
     def __getattr__(self,
                     name):
 
         if name not in ['name', 'type', 'currency']:
-            raise AttributeError(f"'Order' object has no attribute '{name}''")
+            raise AttributeError(f"'Account' object has no attribute '{name}''")
 
         r_userdata = _json_response(http.request(method='GET',
                                                  url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/',
-                                                 headers=self._auth_header))
+                                                 headers=self.__dict__['_auth_header']))
         self.__dict__['name'] = r_userdata['name']
         self.__dict__['type'] = r_userdata['type']
         self.__dict__['currency'] = r_userdata['currency']
@@ -216,7 +214,7 @@ class Account():
 
     def __setattr__(self, name, value):
         if debug:
-            print(f"[{ctime()}:DEBUG] The attributes of 'Account' object cannot be set directly. Nothing has been changed")
+            print(f"[{ctime()}, Account.__setattr__] The attributes of 'Account' object cannot be set directly. Nothing has been changed")
 
     def create_order(self,
                      side=None,
@@ -260,7 +258,7 @@ class Account():
 
         r_order = http.request_encode_body(method='POST',
                                            url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
-                                           headers=self._auth_header,
+                                           headers=self.__dict__['_auth_header'],
                                            fields={
                                                'instrument': instrument.isin,
                                                'side': side,
@@ -272,11 +270,11 @@ class Account():
                                            })
         if r_order.status != 200:
             if debug:
-                print(f'[{ctime()}:DEBUG] Creating order failed. Returned status code: {r_order.status}')
+                print(f'[{ctime()}, Account.create_order] Creating order failed. Returned status code: {r_order.status}')
             return None
 
         if debug:
-            print(f'[{ctime()}:DEBUG] Created order (side: {side}, instrument: {instrument}, quantity: {quantity}, ',
+            print(f'[{ctime()}, Account.create_order] Created order (side: {side}, instrument: {instrument}, quantity: {quantity}, ',
                   f'valid_until: {valid_until}), order_type: {order_type}, limit_price: {limit_price}, stop_price: {stop_price}')
         return Order(_json_response(r_order)['uuid'], self.account, self.token)
 
@@ -303,10 +301,10 @@ class Account():
         for item in orderlist:
             if item.id == order.id and item.status != 'deleted':
                 if debug:
-                    print(f'[{ctime()}:DEBUG] Order could not be deleted')
+                    print(f'[{ctime()}, Account.delete_order] Order could not be deleted')
                     return False
         if debug:
-            print(f'[{ctime()}:DEBUG] Order successfully deleted')
+            print(f'[{ctime()}, Account.delete_order] Order successfully deleted')
         return True
 
     def list_orders(self,
@@ -336,7 +334,7 @@ class Account():
 
         r_orderlist = _json_response(http.request_encode_url(method='GET',
                                                              url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/orders/',
-                                                             headers=self._auth_header,
+                                                             headers=self.__dict__['_auth_header'],
                                                              fields={
                                                                  'limit': limit,
                                                                  'offset': offset,
@@ -391,7 +389,7 @@ class Account():
 
         r_transactlist = _json_response(http.request_encode_url(method='GET',
                                                                 url=f'https://api.lemon.markets/rest/v1/accounts/{self.uuid}/transactions/',
-                                                                headers=self._auth_header,
+                                                                headers=self.__dict__['_auth_header'],
                                                                 fields={
                                                                     'limit': limit,
                                                                     'offset': offset,
@@ -445,7 +443,7 @@ class Account():
 
         r_tradeslist = _json_response(http.request_encode_url(method='GET',
                                                               url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/',
-                                                              headers=self._auth_header,
+                                                              headers=self.__dict__['_auth_header'],
                                                               fields={
                                                                   'ordering': order,
                                                                   'date_from': date_from,
@@ -473,18 +471,8 @@ class Account():
 
         r_latesttrade = _json_response(http.request(method='GET',
                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/ticks/latest/',
-                                                    headers=self._auth_header))
+                                                    headers=self.__dict__['_auth_header']))
         return Trade(r_latesttrade['price'], r_latesttrade['date'])
-
-
-class REST():
-    '''Gives acess to very basic REST calls'''
-
-    def __str__(self):
-        return 'REST object'
-
-    def __repr__(self):
-        return 'REST object'
 
     def list_instruments(self,
                          search=None,
@@ -524,13 +512,15 @@ class REST():
                                                                           'type': instrument_type,
                                                                           'limit': item,
                                                                           'offset': page_offset
-                                                                      }))
+                                                                      },
+                                                                      headers=self.__dict__['_auth_header']))
             instrument_list += r_instrumentlist['results']
             if r_instrumentlist['next'] == 'null':
                 break
         returnlist = [] * len(instrument_list)
         for i, result in enumerate(instrument_list):
             returnlist[i] = Instrument(result['isin'],
+                                       self.token,
                                        result['wkn'],
                                        result['title'],
                                        result['type'],
@@ -581,7 +571,8 @@ class REST():
                                                                      'date_until': date_until,
                                                                      'limit': item,
                                                                      'offset': page_offset
-                                                                 }))
+                                                                 },
+                                                                 headers=self.__dict__['_auth_header']))
             m1candles_list += r_m1candles['results']
             if r_m1candles['next'] == 'null':
                 break
@@ -608,13 +599,17 @@ class REST():
         assert instrument is not None, 'instrument must be specified'
 
         r_latestcandle = _json_response(http.request(method='GET',
-                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument}/candle/m1/latest/'))
+                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{instrument.isin}/candle/m1/latest/',
+                                                     headers=self.__dict__['_auth_header']))
         return Candle(r_latestcandle['open'],
                       r_latestcandle['high'],
                       r_latestcandle['low'],
                       r_latestcandle['close'],
                       60,
                       r_latestcandle['date'])
+
+    def get_instrument(self, isin):
+        return Instrument(isin, self.token)
 
 
 class Candle():
@@ -666,9 +661,12 @@ class Instrument():
 
     Args:
         isin (str, required): The isin of the instrument
+        token (str, required): The token of your account/strategy, should look like a random string.
+            Note: Leave out the 'Token' word
 
     Note:
-        Do not specify more properties than just isin. The instrument's properties will automatically be set
+        Do not specify more properties than just isin and token. The instrument's other
+        properties will automatically be set
 
     Attributes:
         isin (str): The isin of the instrument
@@ -683,14 +681,16 @@ class Instrument():
 
     def __init__(self,
                  isin=None,
+                 token=None,
                  wkn=None,
                  title=None,
                  type=None,
                  symbol=None):
 
-        assert isin is not None, 'Isin must be specified'
+        assert None not in [isin, token], 'Isin and Token must be specified'
 
         self.__dict__['isin'] = isin
+        self.__dict__['token'] = token
 
         if None not in [wkn, title, type, symbol]:
             self.__dict__['wkn'] = wkn
@@ -705,7 +705,8 @@ class Instrument():
             raise AttributeError(f"'Instrument' object has no attribute '{name}''")
 
         instrumentinfo = _json_response(http.request(method='GET',
-                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{self.isin}/'))
+                                                     url=f'https://api.lemon.markets/rest/v1/data/instruments/{self.isin}/',
+                                                     headers={'Authorization': f'Token {self.__dict__["token"]}'}))
         self.__dict__['wkn'] = instrumentinfo['wkn']
         self.__dict__['title'] = instrumentinfo['title']
         self.__dict__['type'] = instrumentinfo['type']
@@ -719,9 +720,11 @@ class Instrument():
         if key == 'isin':
             self.__dict__.clear()
             self.__dict__['isin'] = value
+            if debug:
+                print(f"[{ctime()}, Instrument.__setattr__] Cache cleared, new isin set")
             return
         if debug:
-            print(f"[{ctime()}:DEBUG] The attributes aside from 'isin' of 'Instrument' object cannot be set directly. Nothing has been changed")
+            print(f"[{ctime()}, Instrument.__setattr__] The attributes of 'Instrument' object aside from 'isin' cannot be set directly. Nothing has been changed")
 
     def __str__(self):
 
@@ -799,7 +802,7 @@ class Transaction():
 
     def __setattr__(self, key, value):
         if debug:
-            print(f"[{ctime()}:DEBUG] The attributes of 'Transaction' object cannot be set directly. Nothing has been changed")
+            print(f"[{ctime()}, Transaction.__setattr__] The attributes of 'Transaction' object cannot be set directly. Nothing has been changed")
 
     def __str__(self):
 
@@ -940,7 +943,7 @@ class Order():
 
     def __setattr__(self, key, value):
         if debug:
-            print(f"[{ctime()}:DEBUG] The attributes of 'Order' object cannot be set directly. Nothing has been changed")
+            print(f"[{ctime()}, Order.__setattr__] The attributes of 'Order' object cannot be set directly. Nothing has been changed")
 
     def __str__(self):
 
@@ -1052,7 +1055,7 @@ class Portfolio:
             page_offset = i * 1000 + offset
             r_aggregated = _json_response(http.request_encode_url(method='GET',
                                                                   url=f'https://api.lemon.markets/rest/v1/accounts/{self.account.uuid}/portfolio/',
-                                                                  headers=self._auth_header,
+                                                                  headers=self.__dict__['_auth_header'],
                                                                   fields={
                                                                       'limit': item,
                                                                       'offset': page_offset
@@ -1104,21 +1107,20 @@ def get_accounts(token):
                                                 headers={'Authorization': f'Token {token}'}))
     accountlist = []
     for i in r_accountlist['results']:
-        accountlist.append(Account(i['uuid'], token))
+        accountlist.append(Account(i['uuid'], token, i['name'], i['type'], i['currency']))
     if debug:
-        print(f'[{ctime()}:DEBUG] Returned {len(accountlist)} accounts')
+        i = len(accountlist)
+        print(f'[{ctime()}, get_accounts] Returned {i if i>0 else "no"} {"account" if i == 1 else "accounts"}')
     return accountlist
 
 
 def _json_response(response):
 
-    print(response.data.decode('utf-8'))
+    if debug:
+        print(f'[{ctime()}, _json_response] Received response: {response.data.decode("utf-8")}')
     return loads(response.data.decode('utf-8'))
 
 
 if __name__ == '__main__':
 
     freeze_support()
-    time.sleep(0.5)
-    if debug:
-        print(f'[{ctime()}:DEBUG] Executed freeze_support()')
