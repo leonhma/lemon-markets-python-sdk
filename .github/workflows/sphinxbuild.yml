@@ -33,7 +33,7 @@ jobs:
           rm -rf build/
           touch .nojekyll
           git add -A
-          git config --global user.email "none@none.com"
-          git config --global user.name "release bot"
+          git config --global user.email "leonhardmasche@gmail.com"
+          git config --global user.name "page update bot"
           git commit -m 'Updating page version (triggered by new release)'
           git push origin gh-pages --force
