@@ -1,1 +1,1 @@
-*This currently is Work in Progress*
+*Currently not under further work*
