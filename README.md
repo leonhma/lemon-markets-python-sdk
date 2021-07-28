@@ -1,1 +1,2 @@
-*Currently not under further work*
+<div style="background-color:orange;color:black;position:fixed;top:0;left:0;right:0;height:3em;display:flex;align-items:center;justify-content:center;">This package is currently not under active work.</div>
+<iframe src="https://leonhma.github.io/lemon-markets-python-sdk/" style="position:fixed;top:3em;left:0;bottom:0;right:0;width:100%;height:100%;border:none;margin:0;padding:0;overflow:hidden;z-index:999999;"></iframe>
